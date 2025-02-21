@@ -107,6 +107,14 @@ Follow these steps to download the latest release of the project and deploy it t
 - The project supports both IPv4 and IPv6 addresses.
 - Verify that your PHP configuration allows external HTTP requests (e.g., via `allow_url_fopen` for `file_get_contents`).
 
+# Demo Website
+Usage examples can be accessed at [https://ip.ridho.my.id](https://ip.ridho.my.id) to display the front-end page for IP checking and VPN/Proxy detection.
+
+You can also use the API with various formats:
+- **JSON Format**: [https://api.ridho.my.id/?format=json](https://api.ridho.my.id/?format=json)
+- **Full Format**: [https://api.ridho.my.id/?format=full](https://api.ridho.my.id/?format=full)
+- **Full JSON Format**: [https://api.ridho.my.id/?format=full-json](https://api.ridho.my.id/?format=full-json)
+
 # License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
