@@ -74,7 +74,7 @@ Follow these steps to download the latest release of the project and deploy it t
 - Replace `'your_key_here'` with your actual IPHub API key:
    ```php
    define('IPHUB_API_KEY', 'your_actual_api_key_here');
-- Open the `index.php` file in the uploaded project, and replace domain `example.com` with your own IP-API public service.
+- Replace API server to your API URL or Public IP API services.
 
 ## API & External Service Requirements
 
@@ -108,12 +108,12 @@ Follow these steps to download the latest release of the project and deploy it t
 - Verify that your PHP configuration allows external HTTP requests (e.g., via `allow_url_fopen` for `file_get_contents`).
 
 # Demo Website
-Usage examples can be accessed at [https://ip.ridho.my.id](https://ip.ridho.my.id) to display the front-end page for IP checking and VPN/Proxy detection.
+Usage examples can be accessed at [https://ip.ridho.id](https://ip.ridho.id) to display the front-end page for IP checking and VPN/Proxy detection.
 
 You can also use the API with various formats:
-- **JSON Format**: [https://api.ridho.my.id/?format=json](https://api.ridho.my.id/?format=json)
-- **Full Format**: [https://api.ridho.my.id/?format=full](https://api.ridho.my.id/?format=full)
-- **Full JSON Format**: [https://api.ridho.my.id/?format=full-json](https://api.ridho.my.id/?format=full-json)
+- **JSON Format**: [https://api.ridho.id/?format=json](https://api.ridho.id/?format=json)
+- **Full Format**: [https://api.ridho.id/?format=full](https://api.ridho.id/?format=full)
+- **Full JSON Format**: [https://api.ridho.id/?format=full-json](https://api.ridho.id/?format=full-json)
 
 # License
 
