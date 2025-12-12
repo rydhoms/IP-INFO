@@ -1,5 +1,6 @@
 <?php
 // index.php
+require_once 'config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,11 +10,9 @@
   <meta name="description" content="Use our free IP Address Info tool to instantly find your public IPv4 and IPv6 addresses, view geolocation data, and convert domains to IP addresses.">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <!-- External CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
   
-  <!-- Custom Styles -->
   <style>
     body {
       background-color: #f8f9fa;
@@ -115,13 +114,11 @@
   </style>
 </head>
 <body>
-  <!-- Fixed Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark show">
     <a class="navbar-brand" href="/">IP Info</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <!-- Collapsible Menu -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
@@ -143,9 +140,7 @@
     </div>
   </nav>
 
-  <!-- Main Content -->
   <div class="container">
-    <!-- IP Search Section -->
     <section id="ip-search">
       <div class="row">
         <div class="col">
@@ -164,10 +159,8 @@
       </div>
     </section>
 
-    <!-- IP Info Section -->
     <section id="ip-info">
       <div class="row">
-        <!-- IPv4 Card -->
         <div class="col-md-6 mb-4">
           <div class="card border-primary h-100">
             <div class="card-header bg-primary text-white text-center">
@@ -181,7 +174,6 @@
             </div>
           </div>
         </div>
-        <!-- IPv6 Card -->
         <div class="col-md-6 mb-4">
           <div class="card border-success h-100">
             <div class="card-header bg-success text-white text-center">
@@ -198,14 +190,12 @@
       </div>
     </section>
 
-    <!-- Refresh Button -->
     <div class="row mb-3">
       <div class="col text-center">
         <button id="refresh-btn" class="btn btn-custom"><i class="fas fa-sync-alt"></i> Refresh IPs</button>
       </div>
     </div>
 
-    <!-- Details Buttons -->
     <div class="row">
       <div class="col-12 col-md-6 mb-3">
         <div id="ipv4-button-container"></div>
@@ -216,7 +206,6 @@
     </div>
   </div>
 
-  <!-- API Usage Section -->
   <section id="api-usage">
     <div class="container my-3">
       <h2 class="text-center mb-4">API Usage</h2>
@@ -231,85 +220,82 @@
             </tr>
           </thead>
           <tbody>
-            <!-- IPv4 & IPv6 (Default) -->
             <tr>
               <td rowspan="5">IPv4 & IPv6 (Default)</td>
               <td>Plain Text</td>
-              <td><code>https://api.example.com</code></td>
+              <td><code><?php echo API_DEFAULT; ?></code></td>
               <td><code>123.45.67.89</code> or <code>2001:db8::123.123.123.123</code></td>
             </tr>
             <tr>
               <td>JSON</td>
-              <td><code>https://api.example.com/?format=json</code></td>
+              <td><code><?php echo API_DEFAULT; ?>/?format=json</code></td>
               <td><code>{ "ip": "123.45.67.89" }</code> or <code>{ "ip": "2001:db8::123.123.123.123" }</code></td>
             </tr>
             <tr>
               <td>JSONP</td>
-              <td><code>https://api.example.com/?format=jsonp&amp;callback=myFunction</code></td>
+              <td><code><?php echo API_DEFAULT; ?>/?format=jsonp&amp;callback=myFunction</code></td>
               <td><code>myFunction({ "ip": "123.45.67.89" });</code> or <code>myFunction({ "ip": "2001:db8::123.123.123.123" });</code></td>
             </tr>
             <tr>
               <td>Full (IP + Geolocation)</td>
-              <td><code>https://api.example.com/?format=full</code></td>
+              <td><code><?php echo API_DEFAULT; ?>/?format=full</code></td>
               <td><code>IP Address: 123.45.67.89 Country: Indonesia Region: Jawa Tengah City: Solo Latitude: -7.5666 Longitude: 110.8167 ISP: Telkom Indonesia</code></td>
             </tr>
             <tr>
               <td>Full JSON (IP + Geolocation)</td>
-              <td><code>https://api.example.com/?format=full-json</code></td>
+              <td><code><?php echo API_DEFAULT; ?>/?format=full-json</code></td>
               <td><code>{ "ip": "123.45.67.89", "country": "Indonesia", "region": "Jawa Tengah", "city": "Solo", "latitude": -7.5666, "longitude": 110.8167, "isp": "Telkom Indonesia" }</code></td>
             </tr>
-            <!-- IPv4 (Only) -->
             <tr>
               <td rowspan="5">IPv4 (Only)</td>
               <td>Plain Text</td>
-              <td><code>https://api4.example.com</code></td>
+              <td><code><?php echo API_IPV4; ?></code></td>
               <td><code>123.45.67.89</code></td>
             </tr>
             <tr>
               <td>JSON</td>
-              <td><code>https://api4.example.com/?format=json</code></td>
+              <td><code><?php echo API_IPV4; ?>/?format=json</code></td>
               <td><code>{ "ip": "123.45.67.89" }</code></td>
             </tr>
             <tr>
               <td>JSONP</td>
-              <td><code>https://api4.example.com/?format=jsonp&amp;callback=myFunction</code></td>
+              <td><code><?php echo API_IPV4; ?>/?format=jsonp&amp;callback=myFunction</code></td>
               <td><code>myFunction({ "ip": "123.45.67.89" });</code></td>
             </tr>
             <tr>
               <td>Full (IP + Geolocation)</td>
-              <td><code>https://api4.example.com/?format=full</code></td>
+              <td><code><?php echo API_IPV4; ?>/?format=full</code></td>
               <td><code>IP Address: 123.45.67.89 Country: Indonesia Region: Jawa Tengah City: Solo Latitude: -7.5666 Longitude: 110.8167 ISP: Telkom Indonesia</code></td>
             </tr>
             <tr>
               <td>Full JSON (IP + Geolocation)</td>
-              <td><code>https://api4.example.com/?format=full-json</code></td>
+              <td><code><?php echo API_IPV4; ?>/?format=full-json</code></td>
               <td><code>{ "ip": "123.45.67.89", "country": "Indonesia", "region": "Jawa Tengah", "city": "Solo", "latitude": -7.5666, "longitude": 110.8167, "isp": "Telkom Indonesia" }</code></td>
             </tr>
-            <!-- IPv6 (Only) -->
             <tr>
               <td rowspan="5">IPv6 (Only)</td>
               <td>Plain Text</td>
-              <td><code>https://api6.example.com</code></td>
+              <td><code><?php echo API_IPV6; ?></code></td>
               <td><code>2001:db8::123.123.123.123</code></td>
             </tr>
             <tr>
               <td>JSON</td>
-              <td><code>https://api6.example.com/?format=json</code></td>
+              <td><code><?php echo API_IPV6; ?>/?format=json</code></td>
               <td><code>{ "ip": "2001:db8::123.123.123.123" }</code></td>
             </tr>
             <tr>
               <td>JSONP</td>
-              <td><code>https://api6.example.com/?format=jsonp&amp;callback=myFunction</code></td>
+              <td><code><?php echo API_IPV6; ?>/?format=jsonp&amp;callback=myFunction</code></td>
               <td><code>myFunction({ "ip": "2001:db8::123.123.123.123" });</code></td>
             </tr>
             <tr>
               <td>Full (IP + Geolocation)</td>
-              <td><code>https://api6.example.com/?format=full</code></td>
+              <td><code><?php echo API_IPV6; ?>/?format=full</code></td>
               <td><code>IP Address: 2001:db8::123.123.123.123 Country: Indonesia Region: Jawa Tengah City: Solo Latitude: -7.5666 Longitude: 110.8167 ISP: Telkom Indonesia</code></td>
             </tr>
             <tr>
               <td>Full JSON (IP + Geolocation)</td>
-              <td><code>https://api6.example.com/?format=full-json</code></td>
+              <td><code><?php echo API_IPV6; ?>/?format=full-json</code></td>
               <td><code>{ "ip": "2001:db8::123.123.123.123", "country": "Indonesia", "region": "Jawa Tengah", "city": "Solo", "latitude": -7.5666, "longitude": 110.8167, "isp": "Telkom Indonesia" }</code></td>
             </tr>
           </tbody>
@@ -318,36 +304,35 @@
     </div>
   </section>
 
-  <!-- Example Code Section -->
   <section id="example-code">
     <div class="container my-3">
       <h2 class="text-center mb-4">Example Code</h2>
       
       <h5>Bash (cURL)</h5>
-      <pre><code>curl api.example.com</code></pre>
+      <pre><code>curl <?php echo API_DEFAULT; ?></code></pre>
       
       <h5>Bash (wget)</h5>
-      <pre><code>wget -qO- api.example.com</code></pre>
+      <pre><code>wget -qO- <?php echo API_DEFAULT; ?></code></pre>
       
       <h5>PHP</h5>
       <pre><code>&lt;?php
-$ip = file_get_contents("https://api.example.com/?format=json");
+$ip = file_get_contents("<?php echo API_DEFAULT; ?>/?format=json");
 echo json_decode($ip, true)["ip"];
 ?&gt;</code></pre>
       
       <h5>JavaScript (Browser)</h5>
-      <pre><code>fetch('https://api.example.com/?format=json')
+      <pre><code>fetch('<?php echo API_DEFAULT; ?>/?format=json')
     .then(response =&gt; response.json())
     .then(data =&gt; console.log(data.ip));</code></pre>
       
       <h5>Python</h5>
       <pre><code>import requests
-response = requests.get("https://api.example.com/?format=json")
+response = requests.get("<?php echo API_DEFAULT; ?>/?format=json")
 print(response.json()["ip"])</code></pre>
       
       <h5>Node.js</h5>
       <pre><code>const https = require('https');
-https.get('https://api.example.com/?format=json', (res) =&gt; { 
+https.get('<?php echo API_DEFAULT; ?>/?format=json', (res) =&gt; { 
     let data = '';
     res.on('data', chunk =&gt; { data += chunk; });
     res.on('end', () =&gt; { console.log(JSON.parse(data).ip); });
@@ -355,19 +340,21 @@ https.get('https://api.example.com/?format=json', (res) =&gt; {
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer text-center mt-5">
     <div class="container">
       <p>&copy; <?php echo date('Y'); ?> IP Info. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- External JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Custom Script -->
   <script>
+    // INJECT PHP CONSTANTS INTO JS
+    const apiDefault = "<?php echo API_DEFAULT; ?>";
+    const apiIPv4 = "<?php echo API_IPV4; ?>";
+    const apiIPv6 = "<?php echo API_IPV6; ?>";
+
     // Global variables for IP addresses and their load status
     let ipv4 = null;
     let ipv6 = null;
@@ -426,9 +413,9 @@ https.get('https://api.example.com/?format=json', (res) =&gt; {
       $('#ipv4-address').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading IPv4...');
       $('#ipv6-address').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading IPv6...');
 
-      // Fetch IPv4 address
+      // Fetch IPv4 address using Configured API
       $.ajax({
-        url: 'https://api4.example.com?format=json',
+        url: apiIPv4 + '?format=json', // Menggunakan variabel dari PHP
         dataType: 'json',
         timeout: 5000,
         success: function(data) {
@@ -451,9 +438,9 @@ https.get('https://api.example.com/?format=json', (res) =&gt; {
         }
       });
 
-      // Fetch IPv6 address
+      // Fetch IPv6 address using Configured API
       $.ajax({
-        url: 'https://api6.example.com?format=json',
+        url: apiIPv6 + '?format=json', // Menggunakan variabel dari PHP
         dataType: 'json',
         timeout: 5000,
         success: function(data) {
