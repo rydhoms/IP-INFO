@@ -54,7 +54,7 @@ function getIPHubInfo($ip) {
 function getWhoisServer($domain) {
     $tld = substr($domain, strrpos($domain, '.') + 1); // Extract TLD
     switch ($tld) {
-        case 'id': return 'whois.pandi.or.id';
+        case 'id': return 'whois.id';
         case 'com': case 'net': return 'whois.verisign-grs.com';
         case 'org': return 'whois.pir.org';
         case 'au': return 'whois.auda.org.au';
